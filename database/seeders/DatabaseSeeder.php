@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         Artisan::call('permission:create-role admin');
 
-        \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
 
         $user = User::create([
             'name' => 'admin',
