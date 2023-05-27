@@ -28,12 +28,12 @@ class BookController
 
     public function index(): View
     {
-        $model = $this->model::with('comments')->paginate(self::NUMBER);
+        $model = $this->model::query()->with('comments')->withCount('comments')->paginate(self::NUMBER);
 
         return view($this->getClassName('index'), compact('model'));
     }
 
-    public function show(Book $book)
+    public function show(Book $book):View
     {
         return view($this->getClassName('show'),compact('book'));
     }

@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-md-8">
                         <h5 class="mb-1">{{$book->title}}</h5>
-                        <small>Rating: {{$book->rating}}({{$book->comments->count()}} comments)</small>
+                        <small>Rating: {{$book->rating}}({{$book->comments_count}} comments)</small>
                         <p class="mb-1">{{$book->description}}</p>
                     </div>
                     <div class="col-md-2">
