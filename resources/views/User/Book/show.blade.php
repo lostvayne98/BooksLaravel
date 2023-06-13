@@ -66,14 +66,17 @@
                         <p class="card-text"><small class="text-muted">Опубликовано {{$comment->user->name}} {{$comment->updated_at->format('d M Y')}}</small></p>
                         <p class="card-text"><small class="text-muted">Оценка {{$comment->rating}} </small></p>
                     </div>
-                    @can('updateComment',$comment)
+
+                    @can('update',$comment)
                         <a href="{{route('user.comment.edit',$comment->id)}}" class="btn btn success">Редактировать комментарий</a>
+                    @endcan
 
-                        <form action="{{route('user.comment.destroy',$comment->id)}}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">Удалить комментарий</button>
-                        </form>
 
+                    @can('delete',$comment)
+                    <form action="{{route('user.comment.destroy',$comment->id)}}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Удалить комментарий</button>
+                    </form>
                     @endcan
                 </div>
                 @empty

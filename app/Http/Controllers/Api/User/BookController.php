@@ -17,14 +17,14 @@ class BookController extends Controller
 
     public function index(): JsonResource
     {
-        $book = $this->model::paginate(self::NUMBER);
+        $book = $this->model::query()->withCount('comments')->paginate(self::NUMBER);
 
         return BooksResource::collection($book);
     }
 
-    public function show(Book $book)
+    public function show(Book $book): JsonResource
     {
-        $book->load('comments');
+        $book->load('comments')->withCount('comments');
 
         return new BookResource($book);
     }

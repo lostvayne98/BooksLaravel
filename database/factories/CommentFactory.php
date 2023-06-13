@@ -20,7 +20,7 @@ class CommentFactory extends Factory
 
         return [
             'title' => $this->faker->sentence(),
-            'comment' => $this->faker->text,
+            'description' => $this->faker->text,
             'rating' => $this->faker->numberBetween(1,5),
             'user_id' => $users->random(),
             'book_id' => $books->random(),

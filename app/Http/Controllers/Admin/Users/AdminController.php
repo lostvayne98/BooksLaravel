@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CrudController;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Mail\NotifyAdmin;
 use App\Models\User;
 use App\Services\CrudService\CrudInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\View;
 
@@ -49,6 +51,13 @@ class AdminController
         $model = $this->crudServiceInterface->create($this->model, $request->validated());
 
         $model->assignRole('admin');
+        try {
+            Mail::to($request->email)->to(new NotifyAdmin($model));
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
+
+
 
         return redirect()->route('users.index')->with('success','Успешно');
     }

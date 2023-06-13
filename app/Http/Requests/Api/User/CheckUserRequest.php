@@ -24,7 +24,7 @@ class CheckUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'exists:User,email',
+            'email' => 'exists:\App\Models\User,email',
             'password' => 'required',
         ];
     }

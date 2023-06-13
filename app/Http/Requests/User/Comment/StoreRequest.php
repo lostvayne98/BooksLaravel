@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required',
+            'description' => 'required',
             'title' => 'required',
             'rating' => 'int',
 

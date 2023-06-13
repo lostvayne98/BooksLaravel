@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\User\CommentController;
 use App\Models\Comment;
 use App\Models\User;
+use App\Policies\CommentControllerPolicy;
 use App\Policies\CommentPolicy;
 use App\Policies\UserPolicy;
+use Illuminate\Auth\Access\AuthorizationException;
 use Laravel\Passport\Passport;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -21,7 +24,6 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Comment::class => CommentPolicy::class
-
     ];
 
     /**
@@ -33,8 +35,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('kekes', function ($user) {
-            return $user != null ? Response::allow() : abort(403);
+
+        Gate::define('protected-comment',function (User $user,Comment $comment) {
+
+          return $user->id === $comment->user_id;
         });
 
         Passport::routes();

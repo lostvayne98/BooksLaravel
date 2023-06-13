@@ -19,7 +19,7 @@ class RedirectBackUser
         if (auth()->check()) {
             return $next($request);
         } else {
-            return redirect()->back()->with(['errors' => 'Для того,чтобы написать комментарий необходимо авторизоваться']);
+            return redirect()->back()->with('message','Для того,чтобы написать комментарий необходимо авторизоваться');
         }
     }
 }

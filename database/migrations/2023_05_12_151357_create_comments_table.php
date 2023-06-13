@@ -21,7 +21,7 @@ class CreateCommentsTable extends Migration
             $table->foreignIdFor(Book::class);
             $table->string('title');
             $table->float('rating');
-            $table->text('comment');
+            $table->text('description');
             $table->timestamps();
         });
     }

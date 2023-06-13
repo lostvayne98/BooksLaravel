@@ -30,7 +30,7 @@ Route::group(['prefix' => 'user'],function() {
         ->name('user.book.show');
 
     Route::get('/comment/{book}/create',[\App\Http\Controllers\User\CommentController::class,'create'])
-        ->name('user.comment.create')->middleware('user');
+        ->name('user.comment.create');
 
     Route::post('/comment/{book}/store',[\App\Http\Controllers\User\CommentController::class,'store'])
         ->name('user.comment.store');

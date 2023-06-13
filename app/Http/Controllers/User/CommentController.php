@@ -61,7 +61,7 @@ class CommentController extends Controller
     {
         $this->crudServiceInterface->update($comment, $request->validated());
 
-        $comment->book->updateRating();
+        $this->action->handle($comment->book);
 
         return redirect()->route('user.book.index')->with('success','Успешно');
     }
@@ -69,8 +69,8 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment): RedirectResponse
     {
+        $this->authorize('delete',$comment);
         $this->crudServiceInterface->delete($comment);
-
 
         return redirect()->back()->with('success', 'Comment deleted successfully.');
     }

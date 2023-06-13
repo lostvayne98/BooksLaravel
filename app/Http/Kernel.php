@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\CommentMiddleware;
 use App\Http\Middleware\RedirectBackUser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

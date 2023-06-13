@@ -33,6 +33,18 @@ return [
     |
     */
 
+    'smtp' => [
+        'transport' => 'smtp',
+        'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
+        'port' => env('MAIL_PORT', 587),
+        'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+        'username' => env('MAIL_USERNAME'),
+        'password' => env('MAIL_PASSWORD'),
+        'timeout' => null,
+        'auth_mode' => null,
+    ],
+
+
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',

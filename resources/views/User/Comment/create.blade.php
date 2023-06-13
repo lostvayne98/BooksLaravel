@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Описание</label>
-                    <textarea  name="comment" class="form-control" placeholder="description"  required></textarea>
+                    <textarea  name="description" class="form-control" placeholder="description"  required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Описание</label>

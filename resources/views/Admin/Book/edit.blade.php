@@ -43,7 +43,7 @@
 
                     <div class="form-group" id="category-container">
                         <label for="exampleInputEmail1">Категория</label>
-                    @if(!$data->isEmpty())
+                    @if($data->isNotEmpty())
                         <select name="category_id[]" required>
                             @forelse($data as $category)
                                 <option value="{{$category->id}}">

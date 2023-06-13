@@ -22,7 +22,7 @@ class BooksResource extends JsonResource
             'cover' => $this->cover,
             'slug' => $this->slug,
             'rating' => $this->rating,
-            'comments_count' => $this->comments->count(),
+            'comments_count' => $this->when($this->comments_count, $this->comments_count),
         ];
     }
 }
