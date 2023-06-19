@@ -15,6 +15,13 @@ class Category extends Model
         'slug',
     ];
 
+    protected $hidden = [
+        'pivot',
+        'created_at',
+        'updated_at',
+        'id',
+    ];
+
     public function books():BelongsToMany
     {
         return $this->belongsToMany(Book::class);

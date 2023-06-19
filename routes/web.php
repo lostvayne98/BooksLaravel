@@ -43,6 +43,8 @@ Route::group(['prefix' => 'user'],function() {
 
     Route::post('/comment/{comment}/delete',[\App\Http\Controllers\User\CommentController::class,'destroy'])
         ->name('user.comment.destroy');
+
+    Route::get('/search',[\App\Http\Controllers\SearchController::class,'index'])->name('search');
 });
 
 

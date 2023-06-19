@@ -19,6 +19,7 @@ class CreateBooksTable extends Migration
             $table->text('description');
             $table->string('slug')->nullable();
             $table->string('author');
+            $table->float('price');
             $table->float('rating')->default(0);
             $table->string('cover');
             $table->timestamps();

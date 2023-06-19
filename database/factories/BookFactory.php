@@ -15,17 +15,6 @@ class BookFactory extends Factory
      */
     public function definition()
     {
-       /* $filename = $this->faker->uuid . '.jpg';
-
-        // Copy a placeholder image to the desired location
-        $sourcePath = storage_path('app/public/covers/placeholder.jpg');
-        $destinationPath = storage_path('app/public/covers/') . $filename;
-        copy($sourcePath, $destinationPath);
-
-        // Upload the image to the storage location
-        $uploadedImagePath = 'public/covers/' . $filename;
-        Storage::disk('public')->putFileAs('covers', new File($destinationPath), $filename);*/
-
        $fake_image = $this->faker->image(storage_path('app/public/covers'), 640, 480);
         $name = basename($fake_image);
 
@@ -34,7 +23,8 @@ class BookFactory extends Factory
             'description' => $this->faker->text,
             'cover' => $name,
             'author' => $this->faker->name,
-            'slug' => $this->faker->text(5)
+            'slug' => $this->faker->text(5),
+            'price' => $this->faker->numberBetween(1000,1000000)
         ];
     }
 }

@@ -17,8 +17,20 @@ class Book extends Model
         'title',
         'cover',
         'slug',
-        'rating'
+        'rating',
+        'price',
     ];
+
+   /* protected $hidden = [
+        'id'
+    ];*/
+
+   protected $casts = [
+       'created_at' => 'date:d:m:Y',
+       'updated_at' => 'date:d:m:Y',
+   ];
+
+
 
     public function categories():BelongsToMany
     {
