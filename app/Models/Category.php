@@ -12,7 +12,7 @@ class Category extends Model
 
     protected $fillable = [
         'title',
-        'slug',
+        'slugg',
     ];
 
     protected $hidden = [
@@ -24,6 +24,6 @@ class Category extends Model
 
     public function books():BelongsToMany
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsToMany(Book::class)->withTimestamps();
     }
 }
