@@ -30,7 +30,8 @@ class StoreRequest extends FormRequest
             'category_id' => [
                 'required',
                 Rule::exists('categories','id')
-            ]
+            ],
+            'price' => 'required'
         ];
     }
 

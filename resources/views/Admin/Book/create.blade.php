@@ -37,6 +37,10 @@
                     <label for="exampleInputEmail1">Картинка</label>
                     <input type="file" name="cover" class="form-control"  required>
                 </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Сумма</label>
+                    <input type="number" name="price" class="form-control"  required>
+                </div>
 
                 <div class="form-group" id="category-container">
                     <label for="exampleInputEmail1">Категория</label>

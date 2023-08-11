@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Book extends Model
 {
@@ -28,13 +29,32 @@ class Book extends Model
    protected $casts = [
        'created_at' => 'date:d:m:Y',
        'updated_at' => 'date:d:m:Y',
+       'is_favorite' => 'bool'
    ];
 
+
+   protected $appends = [
+       'is_favorite'
+   ];
+
+    protected function getCoverAttribute()
+    {
+        return asset('/storage/covers/' . $this->attributes['cover']);
+    }
+
+    public function getIsFavoriteAttribute()
+    {
+        if (auth()->check()) {
+            return auth()->user()->isFavoriteBook($this->id);
+        }
+
+        return false; // Set a default value if the user is not authenticated
+    }
 
 
     public function categories():BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function comments():HasMany

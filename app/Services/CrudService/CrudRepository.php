@@ -17,13 +17,13 @@ class CrudRepository implements CrudInterface
       return $model::whereId($id)->first();
     }
 
-    public function update(object $model, array $data):object
+    public function update(string $model, array $data):object
     {
         $model->update($data);
         return $model;
     }
 
-    public function delete(object $model)
+    public function delete(string $model)
     {
         $model->delete();
     }

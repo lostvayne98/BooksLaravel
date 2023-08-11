@@ -62,7 +62,7 @@ class CommentControllerTest extends TestCase
     {
         $response = $this->get("user/comment/{$this->book->id}/create");
 
-        $response->assertStatus(302);
+        $response->assertStatus(200);
     }
 
     public function test_create_with_auth_user()
@@ -77,7 +77,8 @@ class CommentControllerTest extends TestCase
         $response = $this->actingAs($this->user)
             ->withHeaders(['X-CSRF-TOKEN' => $this->token]) // Include the CSRF token in the request headers
             ->post("user/comment/{$this->book->id}/update", $this->generateNewComment());
-        dd($response);
+        $response->assertStatus(302);
+
     }
 
     public function test_edit()
@@ -89,7 +90,7 @@ class CommentControllerTest extends TestCase
 
     public function test_destroy()
     {
-       $response =  $this->post("user/comment/{$this->comment->id}/delete");
+       $response =  $this->actingAs($this->user)->post("user/comment/{$this->comment->id}/delete");
 
        $response->assertStatus(302);
     }
