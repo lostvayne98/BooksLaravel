@@ -12,7 +12,7 @@ class Category extends Model
 
     protected $fillable = [
         'title',
-        'slugg',
+        'slugges',
     ];
 
     protected $hidden = [
